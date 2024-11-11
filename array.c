@@ -44,6 +44,7 @@ int main(void){
         printf("Enter the updated value? ");
         scanf("%d",&value);
 
+        // Calling the function for the logic
         update_value(index, value, arr, lmt);
     }else if(check == 'N' || check == 'n'){
         printf("Program terminated!!\n");
