@@ -28,5 +28,6 @@ int main(void){
     for(int i = 0; i < 10; i++){
         printf("%d ",arr[i]);
     }
-    
+    // Applying the free to give the memory back
+    free(arr);
 }
