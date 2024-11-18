@@ -14,5 +14,5 @@ int main(void){
     // Displaying the result.....
     printf("the factorial is: %d\n",fact);
 
-    return ;
+    return 0;
 }
