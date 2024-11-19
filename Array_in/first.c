@@ -7,7 +7,7 @@ void update(int marks[], int size){
     for(int i = 0; i < size; i++){
         marks[i] += 1;
     }
-}   
+}
 
 //Declaring the main function
 int main(void){
