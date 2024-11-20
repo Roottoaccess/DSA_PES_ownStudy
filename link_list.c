@@ -45,9 +45,29 @@ NODE ins_front(NODE Head, int data){
     return new_node;
 }
 
+NODE insert_in_sorted_list(NODE Head, int data){
+    NODE curr = Head, new_node = create_node(data);
+
+    if (new_node == NULL){
+        return Head;
+    }
+
+    if(Head == NULL || Head -> data >= data){
+        new_node -> link = Head;
+        return new_node;
+    }
+    while(curr -> link != NULL && curr -> link -> data < data){
+        curr = curr -> link;
+    }
+
+    new_node -> link = curr -> link;
+    curr -> link = new_node;
+
+    return Head;
+}
 
 // main function.....
 int main(void){
 
-    
+   create_node(3); 
 }
