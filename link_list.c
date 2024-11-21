@@ -69,5 +69,8 @@ NODE insert_in_sorted_list(NODE Head, int data){
 // main function.....
 int main(void){
 
-   create_node(3); 
+   NODE Head=create_node(4);
+
+//    NODE Head=insert_in_sorted_list(66,1);
+   Display(Head);
 }
