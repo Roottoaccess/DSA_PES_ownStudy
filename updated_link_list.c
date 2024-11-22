@@ -68,9 +68,9 @@ Node ins_last(Node Head, int data){
         if(Head == NULL){
             return new_node;
         }
-        for(temp = Head; temp->link!=NULL; temp=temp->link){
+        for(temp = Head; temp->link!=NULL; temp=temp->link)
+        ;
             temp->link = new_node;
-        }
     }
     return Head;
 }
@@ -149,7 +149,7 @@ Node insert_in_sorted_list(Node Head, int data){
 int main(void){
     
     // Calling the function....
-    Node Head;
+    Node Head = NULL;
     int num;
     int pos;
     while(1){
@@ -175,7 +175,7 @@ int main(void){
             case 5:
                 printf("Enter the num? "); scanf("%d",&num);
                 Head = ins_last(Head, num);
-                break;
+                continue;
             case 6:
                 Head = Delete_Last(Head);
                 continue;
@@ -183,6 +183,7 @@ int main(void){
                 printf("Enter the num? "); scanf("%d",&num);
                 printf("What's the position? "); scanf("%d",&pos);
                 Head = insert_at_position(Head, num, pos);
+                continue;
             case 8:
                 printf("Enter the num? "); scanf("%d",&num);
                 Head = insert_in_sorted_list(Head, num);
@@ -191,7 +192,6 @@ int main(void){
                 break;
             default:
                 printf("Entered wrong input");
-                break;
         }
         return 0;
     }
