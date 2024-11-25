@@ -98,10 +98,10 @@ Node Delete_Last(Node Head){
 // Insertion in position
 Node insert_at_position(Node Head, int data, int pos) {
     Node curr = Head;
-    int i = 0;
+    // int i = 0;
 
     // Traverse the list to find the position
-    for (; curr != NULL && i < pos - 1; i++) {
+    for (int i = 0; curr != NULL && i < pos - 1; i++) {
         curr = curr->link;
     }
 
@@ -113,7 +113,9 @@ Node insert_at_position(Node Head, int data, int pos) {
 
     // Create a new node
     Node new_node = create_node(data);
-    if (new_node != NULL) {
+    if (new_node != NULL) 
+    {
+        // Adding element in between in this operation
         new_node->link = curr->link;
         curr->link = new_node;
     } else {
@@ -145,6 +147,67 @@ Node insert_in_sorted_list(Node Head, int data){
     return Head;
 }
 
+Node delete_position(Node Head, int pos){
+    if(Head == NULL){
+        printf("\n\t\tEmpty List, Cannot delete.");
+        return NULL;
+    }
+    if(pos == 0){
+        Node temp = Head;
+        Head = Head -> link;
+        printf("\n\tDeleted Node %d",temp->data);
+
+        free(temp);
+        return Head;
+    }
+    Node curr = Head;
+    for (int i = 0; curr -> link != NULL && i < pos - 1; i++)
+        curr = curr -> link;
+
+    if(curr->link == NULL){
+        printf("\n\tOut of range. Node not found.");
+
+        return Head;
+    }
+    Node temp = curr->link;
+    curr->link = temp->link;
+    printf("\n\tDeleted Node %d",temp->data);
+    free(temp);
+
+    return Head;
+}
+
+Node reverse_list(Node Head){
+    Node new_head = NULL;
+    int data;
+    while(Head != NULL){
+        data = Head->data;
+        Head = del_front(Head);
+        new_head = ins_front(new_head, data);
+    }
+    return new_head;
+}
+Node sort_list(Node Head){
+    Node sorted_head = NULL;
+    int data;
+
+    while(Head != NULL){
+        int data = Head->data;
+        Head = del_front(Head);
+        sorted_head = insert_in_sorted_list(sorted_head, data);
+    }
+    return sorted_head;
+}
+
+Node merge_sorted_lists(Node Head1, Node Head2){
+    while (Head2 != NULL){
+        int data = Head2->data;
+        Head2 = del_front(Head2);
+        Head1 = insert_in_sorted_list(Head1, data);
+    }
+    return Head1;
+}
+
 // calling the main function.....
 int main(void){
     
@@ -153,7 +216,7 @@ int main(void){
     int num;
     int pos;
     while(1){
-        printf("\t\tPlease give your choice.. \n 1 for create node \n 2 for display node \n 3 for insert in front node \n 4 for delete in front node \n 5 for inserting in last node \n 6 deleting in last node \n 7 insert at position node \n 8 insert in sorted list \n 9 Exit \n");
+        printf("\t\tPlease give your choice.. \n 1 for create node \n 2 for display node \n 3 for insert in front node \n 4 for delete in front node \n 5 for inserting in last node \n 6 deleting in last node \n 7 insert at position node \n 8 insert in sorted list \n 9 deleting at position node \n 10 Reverse the list \n 11 Sorted List \n 12 Merge sorted lists \n 13 Exit \n");
 
         int choice; printf("Enter your choice: "); scanf("%d",&choice);
 
@@ -189,24 +252,23 @@ int main(void){
                 Head = insert_in_sorted_list(Head, num);
                 continue;
             case 9:
+                printf("Enter the position? "); scanf("%d",&pos);
+                Head = delete_position(Head, pos);
+                continue;
+            case 10:
+                Head = reverse_list(Head);
+                continue;
+            case 11:
+                Head = sort_list(Head);
+                continue;
+            case 12:
+                Head = merge_sorted_lists(Head, Head);
+                continue;
+            case 13:
                 break;
             default:
                 printf("Entered wrong input");
         }
         return 0;
     }
-    // Node Head = del_front(Head);
-    // display(Head);
-
-    // Node Head = ins_last(Head, 8);
-    // display(Head);
-
-    // Node Head = Delete_Last(Head);
-    // display(Head);
-
-    // Node Head = insert_at_position(Head, 22, 2);
-    // display(Head);
-
-    // Head = insert_in_sorted_list(Head, 33);
-    // display(Head);
 }
