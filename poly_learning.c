@@ -132,17 +132,17 @@ int main(void){
     // display(n);
     n = insert_node(n, 5,6);
     // display(n);
-    n = insert_node(n, 2, 4);
+    // n = insert_node(n, 2, 4);
     // display(n);
     n = insert_node(n, 1, 2);
     display(n);
     // n = insert_node(n, 2, 5);
     // display(n);
-    poly n2 = create_node(2, 8);
-    n2 = insert_node(n2, 5 , 3);
+    poly n2 = create_node(2, 6);
+    n2 = insert_node(n2, 5 , 5);
     n2 = insert_node(n2, 1 , 5);
-    n2 = insert_node(n2, 4 , 8);
-    n2 = insert_node(n2, 7 , 3);
+    // n2 = insert_node(n2, 4 , 8);
+    n2 = insert_node(n2, 7 , 2);
 
     display(n2);
     n = add_poly(n , n2);
