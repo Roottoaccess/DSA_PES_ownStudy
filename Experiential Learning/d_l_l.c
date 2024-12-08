@@ -41,7 +41,6 @@ node ins_in_front(node n, int data){
     }
     new_node -> next = n;
     new_node -> prev = NULL;
-    // n -> prev = new_node;
 
     return new_node;
 }
