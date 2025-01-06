@@ -68,14 +68,20 @@ node Dequeue(node head){
 
 // Peek operation using the link list....
 void Peek(node head){
-    
+    if(head == NULL){
+        printf("There is no element present in the queue !");
+    }
+
+    printf("\tPEEK ELEMENT FROM THE QUEUE -> %d\n", head -> data);
+
 }
 
 int main(void){
-    node head = create_node(2);
-    display(head);
-    head = Enqueue(head, 4);
-    display(head);
-    head = Dequeue(head);
-    display(head);
+    // node head = create_node(2);
+    // display(head);
+    // head = Enqueue(head, 4);
+    // display(head);
+    // head = Dequeue(head);
+    // display(head);
+    // Peek(head);
 }
