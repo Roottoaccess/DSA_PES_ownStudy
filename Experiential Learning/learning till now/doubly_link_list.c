@@ -137,87 +137,88 @@ node delete_last(node n){
     return n;
 }
 
-// node delete_in_position(node n, int pos){
+node delete_in_position(node n, int pos){
 
-//     if(pos == 0){
-//         node temp = n;
-
-//         n = n -> next;
-//         free(temp);
-
-//         n -> prev = NULL;
-
-//         return n;
-//     }
-
-//     node temp = n;
-
-//     for(int i = 0; i < pos - 1; i++){
-//         temp = temp -> next;
-//     }
-
-//     // printf("%d \n", temp -> data);
-
-//     // return 0;
-
-//     node demo = temp -> next;
-
-//     free(demo);
-
-//     temp -> next = temp -> next -> prev;
-//     temp -> next -> prev = temp;
-
-//     return n;
-// }
-
-node delete_in_position(node n, int pos) {
-    if (n == NULL) {
-        printf("The list is empty.\n");
-        return NULL;
-    }
-
-    if (pos == 0) {
-        // Deleting the head node.
+    if(pos == 0){
         node temp = n;
-        n = n->next;
+
+        n = n -> next;
         free(temp);
 
-        if (n != NULL) {
-            n->prev = NULL; // Update the new head's previous pointer.
-        }
+        n -> prev = NULL;
 
         return n;
     }
 
     node temp = n;
 
-    // Traverse to the node before the position to delete.
-    for (int i = 0; i < pos - 1; i++) {
-        if (temp == NULL || temp->next == NULL) {
-            printf("Position out of range.\n");
-            return n; // Return the unchanged list.
-        }
-        temp = temp->next;
+    for(int i = 0; i < pos - 1; i++){
+        temp = temp -> next;
     }
 
-    node to_delete = temp->next;
+    // printf("%d \n", temp -> data);
 
-    if (to_delete == NULL) {
-        printf("Position out of range.\n");
-        return n; // Return the unchanged list.
-    }
+    // return 0;
 
-    // Update links to bypass the node to delete.
-    temp->next = to_delete->next;
+    node demo = temp -> next;
 
-    if (to_delete->next != NULL) {
-        to_delete->next->prev = temp;
-    }
 
-    free(to_delete); // Free the memory of the node to delete.
+    temp -> next = temp -> next -> next;
+    temp -> next -> prev = temp;
+
+    free(demo);
 
     return n;
 }
+
+// node delete_in_position(node n, int pos) {
+//     if (n == NULL) {
+//         printf("The list is empty.\n");
+//         return NULL;
+//     }
+
+//     if (pos == 0) {
+//         // Deleting the head node.
+//         node temp = n;
+//         n = n->next;
+//         free(temp);
+
+//         if (n != NULL) {
+//             n->prev = NULL; // Update the new head's previous pointer.
+//         }
+
+//         return n;
+//     }
+
+//     node temp = n;
+
+//    // Traverse to the node before the position to delete.
+//     for (int i = 0; i < pos - 1; i++) {
+//         if (temp == NULL || temp->next == NULL) {
+//             printf("Position out of range.\n");
+//             return n; // Return the unchanged list.
+//         }
+//         temp = temp->next;
+//     }
+
+//     node to_delete = temp->next;
+
+//     if (to_delete == NULL) {
+//         printf("Position out of range.\n");
+//         return n; // Return the unchanged list.
+//     }
+
+//     // Update links to bypass the node to delete.
+//     temp->next = to_delete->next;
+
+//     if (to_delete->next != NULL) {
+//         to_delete->next->prev = temp;
+//     }
+
+//     free(to_delete); // Free the memory of the node to delete.
+
+//     return n;
+// }
 
 
 // displaying the node
